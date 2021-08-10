@@ -21,7 +21,7 @@ function FindWorkingPeriod(validatyRange, InnerSegments, options) {
         calcDayTime()
     }
 
-    if (options && options?.format) {
+    if (options && options.format) {
         switch (options.format) {
             case "Seconds": return accumulator;
             case "Minutes": return Math.round((accumulator/60) * 100) / 100
