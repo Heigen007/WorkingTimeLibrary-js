@@ -69,9 +69,11 @@ function calcDayTime() {
 }
 
 function CheckFLevelDay(element, FunctionDayOfWeek) {
+    if(!element.validityStartDate) element.validityStartDate = "1970-1-2"
+    if(!element.validityEndDate) element.validityEndDate = "3000-1-1"
     if( element.segmentWorkingPeriods[FunctionDayOfWeek] != null
         && element.status
-        && new Date(element.validityStartDate) < currentDate
+        && (new Date(element.validityStartDate) < currentDate)
         && new Date(element.validityEndDate) > currentDate)
     return true
     return false
@@ -91,7 +93,7 @@ function accumulateDayTime(FunctionCurrentDate) {
     if(FunctionCurrentDate.segmentWorkingPeriods == null) return 0
     for (let index = 0; index < FunctionCurrentDate.segmentWorkingPeriods.length; index++) {
         localRestAcc += (FunctionCurrentDate.segmentWorkingPeriods[index][1].split(':')[0] - FunctionCurrentDate.segmentWorkingPeriods[index][0].split(':')[0]) * 3600
-        if(FunctionCurrentDate.segmentWorkingPeriods[index][1].split(':').length > 1) localRestAcc += FunctionCurrentDate.segmentWorkingPeriods[index][1].split(':')[1] - FunctionCurrentDate.segmentWorkingPeriods[index][0].split(':')[1] * 60
+        if(FunctionCurrentDate.segmentWorkingPeriods[index][1].split(':').length > 1) localRestAcc += (FunctionCurrentDate.segmentWorkingPeriods[index][1].split(':')[1] - FunctionCurrentDate.segmentWorkingPeriods[index][0].split(':')[1]) * 60
         if(FunctionCurrentDate.segmentWorkingPeriods[index][1].split(':').length > 2) localRestAcc += FunctionCurrentDate.segmentWorkingPeriods[index][1].split(':')[2] - FunctionCurrentDate.segmentWorkingPeriods[index][0].split(':')[2]
     }
     return localRestAcc
