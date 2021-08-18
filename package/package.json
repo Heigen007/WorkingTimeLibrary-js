@@ -1,6 +1,6 @@
 {
   "name": "work-time-library",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Library for counting business time",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,5 @@
   "bugs": {
     "url": "https://github.com/Heigen007/WorkindTimeLibrary/issues"
   },
-  "homepage": "https://github.com/Heigen007/WorkindTimeLibrary#readme"
+  "homepage": "https://shopel-97073.web.app/"
 }
