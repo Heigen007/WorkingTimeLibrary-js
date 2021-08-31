@@ -9,11 +9,14 @@ npm i work-time-library
 ## Usage
 ---
 ```
-import FindWorkingPeriod from 'work-time-library'
+import FindWorkingPeriodAdd from 'work-time-library/FindWorkingTimeAdd'
+import FindWorkingPeriodDiff from 'work-time-library/FindWorkingTimeDiff'
+
 //or
-const FindWorkingPeriod = require('work-time-library')
+const FindWorkingPeriodAdd = require('work-time-library/FindWorkingTimeAdd')
+const FindWorkingPeriodDiff = require('work-time-library/FindWorkingTimeDiff')
 ```
-## Setup
+## Setup for FindWorkingPeriodDiff() function
 ---
 You should put 3 params in function to get the result.
 They are:
@@ -123,8 +126,43 @@ var FunctionOptions = {
 }
 ```
 
-## Final usage of function:
+## Final usage of FindWorkingPeriodDiff() function:
 
 ```
-var result = FindWorkingPeriod(ValidatyRange, Segments, FunctionOptions)
+var result = FindWorkingPeriodDiff(ValidatyRange, Segments, FunctionOptions)
+```
+
+==========================================================
+
+
+## Setup for FindWorkingPeriodAdd() function
+---
+You should put 3 params in function to get the result.
+They are:
+- StartDate.
+- Time segments array.
+- AdditionalSecs.
+
+### Setting StartDate
+
+```
+// Create your StartDate as ISO string
+
+var StartDate = "2021-08-10T16:00:00"
+```
+### Setting time segments
+```
+Set time segments exactly like in FindWorkingPeriodDiff() fuction
+You can find options above
+```
+### Setting AdditionalSecs
+
+```
+var AdditionalSecs = '3600' or 3600 // 3600 secs - 1 hour
+```
+
+## Final usage of FindWorkingPeriodAdd() function:
+
+```
+var result = FindWorkingPeriodAdd(ValidatyRange, Segments, FunctionOptions)
 ```
