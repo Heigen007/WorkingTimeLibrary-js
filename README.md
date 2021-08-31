@@ -1,34 +1,25 @@
 # Work-time-library
-
 Work-time-library is plugin to count business time.
-
 ## Instalation
-
 ---
-
 ### With NPM
-
 ```
 npm i work-time-library
 ```
-
 ## Usage
-
 ---
-
 ```
-import FindWorkingPeriod from 'work-time-library'
+import FindWorkingPeriodAdd from 'work-time-library/FindWorkingTimeAdd'
+import FindWorkingPeriodDiff from 'work-time-library/FindWorkingTimeDiff'
+
 //or
-const FindWorkingPeriod = require('work-time-library')
+const FindWorkingPeriodAdd = require('work-time-library/FindWorkingTimeAdd')
+const FindWorkingPeriodDiff = require('work-time-library/FindWorkingTimeDiff')
 ```
-
-## Setup
-
+## Setup for FindWorkingPeriodDiff() function
 ---
-
 You should put 3 params in function to get the result.
 They are:
-
 - ValidatyRange array(startDate and endDate).
 - Time segments array.
 - FunctionOptions, where you can define the time format output, that you want(hours,minutes or seconds).
@@ -43,20 +34,16 @@ var validatyRange = [
     "2021-8-16" // 16 August, 2021
 ],
 ```
-
 ### Setting time segments
-
-There are 3 types of time segments: ,
-
+There are 3 types of time segments: , 
 - Segment for ordinary week days.  
-   // only one
+    // only one
 - Segments for extra days(for example if you want to make to change period of working time for 7 of May).  
-   // as many as you want
+    // as many as you want
 - Segment for holidays.  
-   // only one
+    // only one
 
 You should put all your segments to Segment array
-
 ```
 // Segment for ordinary week days structure:
 
@@ -67,9 +54,9 @@ You should put all your segments to Segment array
 
     status: true, // if status == false, segment wont be available
 
-    validityStartDate: "2010-1-1",
+    validityStartDate: "2010-1-1", 
         // days from validatyRange array will be counted only within this two dates
-    validityEndDate: "2050-1-1",
+    validityEndDate: "2050-1-1", 
 
     segmentWorkingPeriods: {
 
@@ -83,7 +70,7 @@ You should put all your segments to Segment array
 
         Friday: [["7:00:00","10:00:00"],["11:00:00","18:00:00"]],
 
-        Saturday: null,
+        Saturday: null, 
             // If you want to make holiday, enter "null"
 
         Sunday: null
@@ -91,7 +78,6 @@ You should put all your segments to Segment array
     segmentLevel: 1 // !
 }
 ```
-
 ```
 // Segment for extra days:
 
@@ -104,7 +90,7 @@ You should put all your segments to Segment array
 
     segmentWorkingPeriod: [["6:00:00","10:00:00"],["12:00:00","17:00:00"]],
 
-    segmentValidatyDays: [
+    segmentValidatyDays: [ 
         "2021-8-12",
         "2021-8-16"
     ]
@@ -113,7 +99,6 @@ You should put all your segments to Segment array
     segmentLevel: 2 // !
 }
 ```
-
 ```
 // Segment for holidays:
 
@@ -130,10 +115,9 @@ You should put all your segments to Segment array
     ]
 
     segmentLevel: 3
-        // !
+        // ! 
 },
 ```
-
 ### Setting FunctionOptions
 
 ```
@@ -142,8 +126,43 @@ var FunctionOptions = {
 }
 ```
 
-## Final usage of function:
+## Final usage of FindWorkingPeriodDiff() function:
 
 ```
-var result = FindWorkingPeriod(ValidatyRange, Segments, FunctionOptions)
+var result = FindWorkingPeriodDiff(ValidatyRange, Segments, FunctionOptions)
+```
+
+==========================================================
+
+
+## Setup for FindWorkingPeriodAdd() function
+---
+You should put 3 params in function to get the result.
+They are:
+- StartDate.
+- Time segments array.
+- AdditionalSecs.
+
+### Setting StartDate
+
+```
+// Create your StartDate as ISO string
+
+var StartDate = "2021-08-10T16:00:00"
+```
+### Setting time segments
+```
+Set time segments exactly like in FindWorkingPeriodDiff() fuction
+You can find options above
+```
+### Setting AdditionalSecs
+
+```
+var AdditionalSecs = '3600' or 3600 // 3600 secs - 1 hour
+```
+
+## Final usage of FindWorkingPeriodAdd() function:
+
+```
+var result = FindWorkingPeriodAdd(ValidatyRange, Segments, FunctionOptions)
 ```
