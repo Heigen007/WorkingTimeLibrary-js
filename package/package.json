@@ -1,8 +1,8 @@
 {
   "name": "work-time-library",
-  "version": "1.0.8",
+  "version": "1.1.1",
   "description": "Library for counting business time",
-  "main": "index.js",
+  "main": "FindWorkingTimeDiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
