@@ -1,6 +1,6 @@
 {
   "name": "work-time-library",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Library for counting business time",
   "main": "FindWorkingTimeDiff.js",
   "scripts": {
